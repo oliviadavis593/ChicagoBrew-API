@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const BrewService = require('./brews-service')
 
@@ -23,19 +24,50 @@ brewRouter
             })
             .catch(next)
     })
+    .post(jsonParser, (req, res, next) => {
+      const { name, address, phone_number, details, website } = req.body
+      const newBrew = { name, address, phone_number, details, website }
+      BrewService.insertBrews(
+          req.app.get('db'),
+          newBrew
+      )
+        .then(brew => {
+            res 
+                .status(201)
+                .location(path.posix.join(req.originalUrl + `/${brew.id}`))
+                .json(serializeBrew(brew))
+        })
+        .catch(next)
+    })
 
 brewRouter
     .route('/:brew_id')
-    .get((req, res, next) => {
-        const knexInstance = req.app.get('db')
-        BrewService.getById(knexInstance, req.params.brew_id)
+    .all((req, res, next) => {
+        BrewService.getById(
+            req.app.get('db'),
+            req.params.brew_id
+        )
             .then(brew => {
                 if (!brew) {
                     return res.status(404).json({
                         error: { message: `Brew doesn't exist` }
                     })
                 }
-                res.json(brew)
+                res.brew = brew //save the brew for the next middleware 
+                next()
+            })
+            .catch(next)
+    })
+    .get((req, res, next) => {
+        res.json(serializeBrew(res.brew))
+    })
+    .delete((req, res, next) => {
+        BrewService.deleteBrew(
+            req.app.get('db'),
+            req.params.brew_id
+        )
+            .then(() => {
+                res.status(204).end()
             })
             .catch(next)
     })
