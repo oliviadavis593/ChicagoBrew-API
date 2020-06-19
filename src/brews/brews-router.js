@@ -71,5 +71,19 @@ brewRouter
             })
             .catch(next)
     })
+    .patch(jsonParser, (req, res, next) => {
+        const { name, address, phone_number, details, website } = req.body
+        const brewToUpdate = { name, address, phone_number, details, website }
+
+        BrewService.updateBrew(
+            req.app.get('db'),
+            req.params.brew_id, 
+            brewToUpdate
+        )
+            .then(numRowsAffected => {
+                res.status(204).end()
+            })
+            .catch(next)
+    })
 
 module.exports = brewRouter

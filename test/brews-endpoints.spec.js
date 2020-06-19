@@ -136,4 +136,51 @@ describe('Brews Endpoints', function() {
             })
         })
     })
+
+    describe.only(`PATCH /api/brews/:brew_id`, () => {
+        context(`Given no brews`, () => {
+            it(`responds with 404`, () => {
+                const brewId = 123456
+                return supertest(app)
+                    .patch(`/api/brews/${brewId}`)
+                    .expect(404, {
+                        error: { message: `Brew doesn't exist` }
+                    })
+            })
+        })
+
+        context('Given there are brews in the database', () => {
+            const testBrews = makeBrewsArray()
+
+            beforeEach('insert brews', () => {
+                return db 
+                    .into('chicagobrew')
+                    .insert(testBrews)
+            })
+
+            it('responds with 204 and updates the brew', () => {
+                const idToUpdate = 2
+                const updateBrew = {
+                    name: 'fff update',
+                    address: 'dddd update',
+                    phone_number: 'ppppp update',
+                    details: 'dddd update',
+                    website: 'wwwww update'
+                }
+                const expectedBrew = {
+                    ...testBrews[idToUpdate - 1], 
+                    ...updateBrew
+                }
+                return supertest(app)
+                    .patch(`/api/brews/${idToUpdate}`)
+                    .send(updateBrew)
+                    .expect(204)
+                    .then(res => 
+                        supertest(app)
+                            .get(`/api/brews/${idToUpdate}`)
+                            .expect(expectedBrew)    
+                    )
+            })
+        })
+    })
 })
