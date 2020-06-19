@@ -9,7 +9,7 @@ describe('Brews Endpoints', function() {
     before('make knex instance', () => {
         db = knex({
             client: 'pg',
-            connection: process.env.TEST_DB_URL, 
+            connection: process.env.TEST_DATABASE_URL, 
         })
         app.set('db', db)
     })
@@ -137,7 +137,7 @@ describe('Brews Endpoints', function() {
         })
     })
 
-    describe.only(`PATCH /api/brews/:brew_id`, () => {
+    describe(`PATCH /api/brews/:brew_id`, () => {
         context(`Given no brews`, () => {
             it(`responds with 404`, () => {
                 const brewId = 123456
