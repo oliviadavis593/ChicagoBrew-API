@@ -42,7 +42,7 @@
 ]
 ```
 
-### PUT `/api/items/:item_id`
+### PUT `/api/brews/:brew_id`
 ```javascript
 //req.body
 {
@@ -56,11 +56,36 @@
 //res.body
 {
     [
-        id: item_id, 
-        rating: '🎸',
-        gear_name: [String],
-        features: [String], 
-        comments: [String]
+        id: brew_id, 
+        name: String, 
+        phone_number: String, 
+        address: String,
+        details: String,
+        website: String
+    ]
+}
+```
+
+### DELETE `/api/brews/:brew_id`
+```javascript
+//req.body
+{
+        name: String, 
+        phone_number: String, 
+        address: String,
+        details: String,
+        website: String
+}
+
+//res.body
+{
+    [
+        id: brew_id, 
+        name: String, 
+        phone_number: String, 
+        address: String,
+        details: String,
+        website: String
     ]
 }
 ```
