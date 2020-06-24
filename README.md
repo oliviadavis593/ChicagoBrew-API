@@ -1,26 +1,73 @@
-# Express Boilerplate!
+# ChicagoBrew 🍺
+- [ChicagoBrew](https://chicagobrew.vercel.app/) is a fully responsive, server-side rendered web application that helps people in the Chicago area locate and enjoy the best breweries in town. 
 
-This is a boilerplate project used for starting new projects!
+# API Overiew 👩‍💻
 
-## Set up
+```
+/api
+.
+├── /brews
+│   └── GET
+|   └── POST
+│   └── PUT
+│       ├── /:item_id
+│   └── DELETE
+│       ├── /:item_id   
+```
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+### POST `/api/brews`
+```javascript
+//req.body
+{
+    name: String
+}
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+//res.body
+{
+    name: String
+}
+```
 
-## Scripts
+### GET `/api/brews`
+```javascript
+//req.body
+[
+    {
+        name: String, 
+        phone_number: String, 
+        address: String,
+        details: String,
+        website: String
+    }
+]
+```
 
-Start the application `npm start`
+### PUT `/api/items/:item_id`
+```javascript
+//req.body
+{
+        name: String, 
+        phone_number: String, 
+        address: String,
+        details: String,
+        website: String
+}
 
-Start nodemon for the application `npm run dev`
+//res.body
+{
+    [
+        id: item_id, 
+        rating: '🎸',
+        gear_name: [String],
+        features: [String], 
+        comments: [String]
+    ]
+}
+```
 
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+# Tech Used 🖥
+- [Node](https://nodejs.org/en/) - Run-time environment
+- [Express](https://expressjs.com/) - Web application framework
+- [PostgreSQL](https://www.postgresql.org/) - Relational Database Management System
+- [Mocha](https://mochajs.org/) - Testing
+- [Chai](https://www.chaijs.com/) - Testing
