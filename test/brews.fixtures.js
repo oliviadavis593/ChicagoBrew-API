@@ -1,3 +1,6 @@
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+
 function makeBrewsArray() {
     return [
         {
@@ -27,6 +30,41 @@ function makeBrewsArray() {
     ]
 }
 
+function makeUsersArray() {
+    return [
+        {
+            full_name: 'Demo',
+            email: 'chicago@brew.com',
+            password: bcrypt.hashSync('password', 12),
+        },
+        {
+            full_name: 'Test',
+            email: 'testEmail@123.com',
+            password: bcrypt.hashSync('password', 12),
+        },
+        {
+            full_name: 'TestTwo',
+            email: 'chibrew@111.com',
+            password: bcrypt.hashSync('password', 12),
+        }
+    ]
+}
+
+function makeBrewFixtures() {
+    const testUsers = makeUsersArray()
+    const testBrews = makeBrewsArray()
+
+    return { testUsers, testBrews }
+}
+
+function makeAuthHeader(user) {
+    const token = Buffer.from(`${user.email}:${user.password}`).toString('base64')
+    return `Basic ${token}`
+}
+
 module.exports = {
     makeBrewsArray,
+    makeUsersArray,
+    makeAuthHeader, 
+    makeBrewFixtures
 }

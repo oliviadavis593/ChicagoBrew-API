@@ -40,3 +40,9 @@ VALUES
     ('Cruz Blanca Cervecería', '904 W Randolph St, Chicago, IL 60607', '(312) 733-1975', 'Hip brewery & Mexican-influenced pub from Rick Bayless with a visible production area & a taco menu.', 'https://www.rickbayless.com/restaurants/cerveceria-cruz-blanca/'),
     ('Dovetail Brewery', '1800 W Belle Plaine Ave, Chicago, IL 60613', '(773) 683-1414', 'Chill taproom for sampling house-brewed beers based on classic European styles in a vast space.', 'http://dovetailbrewery.com/'),
     ('DryHop Brewers', '3155 N Broadway, Chicago, IL 60657', '(773) 857-3155', 'European-inspired gastropub plates & seasonal house brews in a rustic, laid-back space.', 'https://dryhopchicago.com/')
+
+INSERT INTO chicagobrew_users (full_name, email, password)
+VALUES
+    ('Demo', 'chicago@brew.com', 'chiBrew773'),
+    ('Olivia D.', 'olivia.davis593@gmail.com', 'Odod123'),
+    ('Sam Smith', 'sam@hotmail.com', 'samsPassword');

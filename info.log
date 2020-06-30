@@ -1,3 +1,20 @@
 {"message":"undefined is not a function","level":"error"}
 {"message":"[object Array] is not a function","level":"error"}
 {"message":"undefined is not a function","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"jwt.sigh is not a function","level":"error"}
+{"message":"jwt.sigh is not a function","level":"error"}
+{"message":"select * from \"chicagobrew\" where \"email\" = $1 limit $2 - column \"email\" does not exist","level":"error"}
+{"message":"insert into \"chicagobrew\" (\"email\", \"full_name\", \"password\") values ($1, $2, $3) returning * - column \"email\" of relation \"chicagobrew\" does not exist","level":"error"}
+{"message":"insert into \"chicagobrew\" (\"email\", \"full_name\", \"password\") values ($1, $2, $3) returning * - column \"email\" of relation \"chicagobrew\" does not exist","level":"error"}

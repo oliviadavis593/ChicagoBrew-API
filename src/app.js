@@ -6,6 +6,8 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config') 
 const errorHandler = require('./error-handler')
 const brewRouter = require('./brews/brews-router')
+const authRouter = require('./auth/auth-router')
+const usersRouter = require('./users/users-router')
 
 const app = express()
 
@@ -19,6 +21,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/brews', brewRouter)
+app.use('/api', authRouter)
+app.use('/api/users', usersRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!')
